@@ -1,0 +1,17 @@
+h1 {
+    text-align:center;
+    }
+
+div#centrar {
+    text-align: center;
+    }
+    
+div#centrar table {
+    margin: 0 auto;
+    text-align: left;
+    }
+
+    div#resultado {
+        text-align: center;
+        }
+   
