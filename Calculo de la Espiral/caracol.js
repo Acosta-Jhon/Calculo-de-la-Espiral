@@ -30,18 +30,6 @@ var m = [];
     }
     
 //Recorre toda la Matriz ---------------------------------------
-function espiral (){ 
-    for (var contador1 =0; contador1 < i.lenght-1; contador1++) {
-
-       console.log(contador1)
-    
-            for (var contador2 = 0; contador2 < m; contador2++) {           
-                
-            }
-           
-        }
-}
-
 var maxrows = rows - 1;
     var minrows = 0;
     var maxcols = cols - 1;
@@ -53,16 +41,20 @@ var maxrows = rows - 1;
     var vertical = 0;
     var n=rows*cols;
     var cont=2;
-    function calculo() {
-        //maxrows <= 0 || maxcols <=0
+    function operar() {
+        
         console.log(resultado);
+        
         if (cont>n) {
             document.getElementById("result").innerHTML = 'Resultado: ' + resultado;
             var fec = new Date();
             document.getElementById("fecha").innerHTML = 'Fecha actual: ' + fec.getDate() + '/' + (fec.getMonth() + 1) + '/' + fec.getFullYear();
             document.getElementById("hora").innerHTML = 'Hora actual: ' + fec.getHours() + ':' + fec.getMinutes() + ':' + fec.getSeconds();
+        
         } else {
+            
             console.log(" operacion: "+operacion);
+            
             if (operacion == 1) {
                 resultado += parseInt(tablas.rows[vertical].cells[horizontal].innerHTML);
             } else if (operacion == 2) {
@@ -85,7 +77,7 @@ var maxrows = rows - 1;
                         horizontal++;
                         cont++;
                     }
-                    calculo();
+                    operar();
                     break;
                 case 2:
                     if (vertical >= maxrows) {
@@ -100,7 +92,7 @@ var maxrows = rows - 1;
                         vertical++;
                         cont++;
                     }
-                    calculo();
+                    operar();
                     break;
                 case 3:
                     if (horizontal <= mincols) {
@@ -115,7 +107,7 @@ var maxrows = rows - 1;
                         horizontal--;
                         cont++;
                     }
-                    calculo();
+                    operar();
                     break;
                 case 4:
                     if (vertical <= minrows) {
@@ -130,15 +122,15 @@ var maxrows = rows - 1;
                         vertical--;
                         cont++;
                     }
-                    calculo();
+                    operar();
                     break;
             }
             
         }
     }
-    calculo();
+  operar()
 }
- 
+ /
 var resultado;
 document.write("Resultado :    ")
 var fecha=new Date();
