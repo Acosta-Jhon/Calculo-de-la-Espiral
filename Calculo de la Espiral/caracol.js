@@ -28,113 +28,112 @@ var m = [];
         }  
 
     }
-    
-//Recorre toda la Matriz ---------------------------------------
-var maxrows = rows - 1;
-    var minrows = 0;
-    var maxcols = cols - 1;
-    var mincols = 0;
-    var direccion = 1;
-    var operacion = 1;
+
+var mFilas = rows - 1;
+    var filas = 0;
+    var columnas = cols - 1;
+    var mColumnas = 0;
+    var ubicacion = 1;
+    var signo = 1;
     var resultado = parseInt(tablas.rows[0].cells[0].innerHTML);
-    var horizontal = 1;
-    var vertical = 0;
+    var recorridoH = 1;
+    var recorridoV = 0;
     var n=rows*cols;
-    var cont=2;
-    function operar() {
+    var contadorNum=2;
+    function calculo() {
         
         console.log(resultado);
-        
         if (cont>n) {
             document.getElementById("result").innerHTML = 'Resultado: ' + resultado;
             var fec = new Date();
             document.getElementById("fecha").innerHTML = 'Fecha actual: ' + fec.getDate() + '/' + (fec.getMonth() + 1) + '/' + fec.getFullYear();
             document.getElementById("hora").innerHTML = 'Hora actual: ' + fec.getHours() + ':' + fec.getMinutes() + ':' + fec.getSeconds();
-        
         } else {
-            
-            console.log(" operacion: "+operacion);
-            
-            if (operacion == 1) {
-                resultado += parseInt(tablas.rows[vertical].cells[horizontal].innerHTML);
-            } else if (operacion == 2) {
-                resultado -= parseInt(tablas.rows[vertical].cells[horizontal].innerHTML);
-            } else if (operacion == 3) {
-                resultado *= parseInt(tablas.rows[vertical].cells[horizontal].innerHTML);
-                operacion = 0;
+            console.log(" operacion: "+signo);
+            if (signo == 1) {
+                resultado += parseInt(tablas.rows[recorridoV].cells[recorridoH].innerHTML);
+            } else if (signo == 2) {
+                resultado -= parseInt(tablas.rows[recorridoV].cells[recorridoH].innerHTML);
+            } else if (signo == 3) {
+                resultado *= parseInt(tablas.rows[recorridoV].cells[recorridoH].innerHTML);
+                signo = 0;
             }
-            switch (direccion) {
+            switch (ubicacion) {
                 case 1:
-                    if (horizontal >= maxcols) {
-                        direccion = 2;
-                        minrows += 1;
-                        vertical = minrows;
-                        horizontal = maxcols;
-                        operacion++;
-                        cont++;
+                    if (recorridoH >= columnas) {
+                        ubicacion = 2;
+                        filas += 1;
+                        recorridoV = filas;
+                        recorridoH = columnas;
+                        signo++;
+                        contadorNum++;
                     } else {
-                        operacion++;
-                        horizontal++;
-                        cont++;
+                        signo++;
+                        recorridoH++;
+                        contadorNum++;
                     }
-                    operar();
+                    calculo();
                     break;
                 case 2:
-                    if (vertical >= maxrows) {
-                        direccion = 3;
-                        maxcols -= 1;
-                        vertical = maxrows;
-                        horizontal = maxcols;
-                        operacion++;
-                        cont++;
+                    if (recorridoV >= mFilas) {
+                        ubicacion = 3;
+                        columnas -= 1;
+                        recorridoV = mFilas;
+                        recorridoH = columnas;
+                        signo++;
+                        contadorNum++;
                     } else {
-                        operacion++;
-                        vertical++;
-                        cont++;
+                        signo++;
+                        recorridoV++;
+                        contadorNum++;
                     }
-                    operar();
+                    calculo();
                     break;
                 case 3:
-                    if (horizontal <= mincols) {
-                        direccion = 4;
-                        maxrows -= 1;
-                        vertical = maxrows;
-                        horizontal = mincols;
-                        operacion++;
-                        cont++;
+                    if (recorridoH <= mColumnas) {
+                        ubicacion = 4;
+                        mFilas -= 1;
+                        recorridoV = mFilas;
+                        recorridoH = mColumnas;
+                        signo++;
+                        contadorNum++;
                     } else {
-                        operacion++;
-                        horizontal--;
-                        cont++;
+                        signo++;
+                        recorridoH--;
+                        contadorNum++;
                     }
-                    operar();
+                    calculo();
                     break;
                 case 4:
-                    if (vertical <= minrows) {
-                        direccion = 1;
-                        mincols += 1;
-                        horizontal = mincols;
-                        vertical = minrows;
-                        operacion++;
-                        cont++;
+                    if (recorridoV <= filas) {
+                        ubicacion = 1;
+                        mColumnas += 1;
+                        recorridoH = mincols;
+                        recorridoV = filas;
+                        signo++;
+                        contadorNum++;
                     } else {
-                        operacion++;
-                        vertical--;
-                        cont++;
+                        signo++;
+                        recorridoV--;
+                        contadorNum++;
                     }
-                    operar();
+                    calculo();
                     break;
             }
             
         }
     }
-  operar()
+    calculo();
+    }
 }
- /
+ 
 var resultado;
-document.write("Resultado :    ")
+
+document.write("El resultado es  :    ")
 var fecha=new Date();
+
 document.write('           - Fecha :' + fecha.toLocaleDateString());
 var hora=fecha.getHours(); 
+
 var minutos=fecha.getMinutes();
 document.write(' - Hora:  '+ hora.toString() +':'+ minutos.toString());
