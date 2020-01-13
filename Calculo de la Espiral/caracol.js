@@ -43,7 +43,7 @@ var mFilas = rows - 1;
     function calculo() {
         
         console.log(resultado);
-        if (cont>n) {
+        if (contadorNum>n) {
             document.getElementById("result").innerHTML = 'Resultado: ' + resultado;
             var fec = new Date();
             document.getElementById("fecha").innerHTML = 'Fecha actual: ' + fec.getDate() + '/' + (fec.getMonth() + 1) + '/' + fec.getFullYear();
